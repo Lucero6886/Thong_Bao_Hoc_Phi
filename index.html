@@ -1,0 +1,351 @@
+<!-- 
+Palette Chosen: Energetic Blue & Gold (#1E3A8A, #3B82F6, #F59E0B, #10B981)
+Mermaid JS was NOT used in this output. 
+SVG was NOT used anywhere in this output. 
+Narrative Plan:
+1. Hero/Introduction: Welcome parents, highlight the International Class and the special 1/6 occasion.
+2. Data Overview (The Offer): Contrast the original fee with the discounted fee using big numbers and a Doughnut chart to visualize the 20% savings.
+3. In-Depth Analysis (Skill Development): Visualize the comprehensive communication skills development implied in the text using a Bar chart.
+4. Temporal Trends (Timeline): Use a CSS-based timeline to clearly show the start, milestone (1/6), and end dates of the promotion.
+5. Organize/Process (Payment): Clear, card-based instructions for bank transfer and direct payment.
+Visualization Choices:
+- Fee Breakdown -> Compare -> Doughnut Chart (Chart.js) -> Best visualizes the proportion of savings vs the total cost. NO SVG.
+- Skills Focus -> Compare -> Bar Chart (Chart.js) -> Best shows the multi-faceted development areas. NO SVG.
+- Promotion Window -> Change -> CSS Timeline -> Clear sequence of dates. NO SVG.
+-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Báo Học Phí - Lucero English</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        .timeline-line {
+            position: absolute;
+            left: 1.25rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #E2E8F0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-blue-200">
+
+    <div class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        
+        <header class="bg-gradient-to-r from-blue-900 to-blue-600 rounded-3xl p-8 sm:p-12 text-white shadow-xl mb-10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 text-9xl opacity-10">🎓</div>
+            <div class="relative z-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-amber-500 text-amber-950 font-bold text-sm mb-4 uppercase tracking-wider">Thông báo chính thức</span>
+                <h1 class="text-3xl sm:text-5xl font-black mb-4 leading-tight">Chương Trình Học Phí Lớp Quốc Tế 2026</h1>
+                <p class="text-blue-100 text-lg sm:text-xl max-w-2xl font-light">
+                    Kính gửi Quý Phụ huynh, Hệ thống Anh ngữ Lucero xin gửi thông tin đóng học phí thường niên. Đặc biệt, chào mừng ngày Quốc tế Thiếu nhi 1/6, chúng tôi mang đến món quà tri ân dành riêng cho các con tham gia lớp "Luyện Tiếng Anh Giao Tiếp Cùng Giáo Viên Nước Ngoài".
+                </p>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <section class="glass-card rounded-3xl p-8 md:col-span-2 border-t-4 border-amber-500">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <span>🎁</span> Ưu Đãi Đặc Biệt Dịp 1/6
+                    </h2>
+                    <p class="text-slate-600 mt-2">Phân tích chi tiết mức học phí và khoản tiết kiệm Quý Phụ huynh nhận được khi thanh toán trong thời gian ưu đãi.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="flex flex-col gap-6">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <p class="text-slate-500 font-medium mb-1">Học phí gốc thường niên</p>
+                            <p class="text-3xl font-bold text-slate-400 line-through">2.500.000 VNĐ</p>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-red-500 text-white font-bold px-3 py-1 rounded-bl-lg text-sm">-20%</div>
+                            <p class="text-blue-800 font-medium mb-1">Học phí áp dụng ưu đãi</p>
+                            <p class="text-4xl sm:text-5xl font-black text-blue-600">2.000.000 <span class="text-xl sm:text-2xl font-bold">VNĐ/năm</span></p>
+                            <p class="text-emerald-600 font-bold mt-2 flex items-center gap-1">
+                                <span>↓</span> Tiết kiệm ngay 500.000 VNĐ
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full">
+                        <div class="chart-container">
+                            <canvas id="feeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card rounded-3xl p-8 border-t-4 border-blue-500">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <span>📅</span> Thời Gian Áp Dụng
+                    </h2>
+                    <p class="text-slate-600 mt-2">Chương trình ưu đãi có giới hạn. Quý Phụ huynh vui lòng lưu ý các mốc thời gian quan trọng sau đây.</p>
+                </div>
+
+                <div class="relative pt-4 pb-4">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="relative z-10 flex items-start mb-8">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 border-4 border-white shadow flex items-center justify-center text-blue-600 font-bold shrink-0">BĐ</div>
+                        <div class="ml-6 bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex-1">
+                            <h4 class="font-bold text-slate-800">28/05/2026</h4>
+                            <p class="text-sm text-slate-500">Bắt đầu mở cổng thanh toán ưu đãi 20%.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10 flex items-start mb-8">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 border-4 border-white shadow flex items-center justify-center text-amber-500 text-xl shrink-0">🎈</div>
+                        <div class="ml-6 bg-amber-50 p-4 rounded-xl shadow-sm border border-amber-100 flex-1">
+                            <h4 class="font-bold text-amber-900">01/06/2026</h4>
+                            <p class="text-sm text-amber-700">Quốc tế Thiếu nhi. Chúc các con chăm ngoan, học giỏi!</p>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-red-100 border-4 border-white shadow flex items-center justify-center text-red-500 font-bold shrink-0">KT</div>
+                        <div class="ml-6 bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex-1">
+                            <h4 class="font-bold text-slate-800">08/06/2026</h4>
+                            <p class="text-sm text-slate-500">Kết thúc thời hạn áp dụng học phí ưu đãi.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card rounded-3xl p-8 border-t-4 border-emerald-500">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <span>📈</span> Giá Trị Cốt Lõi Lớp Quốc Tế
+                    </h2>
+                    <p class="text-slate-600 mt-2">Phân bổ trọng tâm đào tạo giúp các con phát triển kỹ năng giao tiếp toàn diện vào tối Chủ Nhật hàng tuần.</p>
+                </div>
+                <div class="w-full">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card rounded-3xl p-8 md:col-span-2 border-t-4 border-slate-800">
+                <div class="mb-6 text-center">
+                    <h2 class="text-3xl font-bold text-slate-800">Hướng Dẫn Thanh Toán</h2>
+                    <p class="text-slate-600 mt-2 max-w-xl mx-auto">Quý Phụ huynh vui lòng lựa chọn một trong hai hình thức dưới đây để hoàn tất việc đóng học phí và nhận ưu đãi.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-2xl p-6 border-2 border-blue-100 hover:border-blue-300 transition-colors">
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="text-4xl">💳</div>
+                            <h3 class="text-xl font-bold text-blue-900">Chuyển Khoản Ngân Hàng</h3>
+                        </div>
+                        
+                        <div class="flex flex-col gap-6 items-center mb-5">
+                            <div class="w-full flex justify-center shrink-0">
+                                <img src="banking.jpg" alt="Mã QR Chuyển khoản VietinBank" class="w-56 sm:w-64 h-auto object-contain rounded-xl border-2 border-slate-200 shadow-md p-2 bg-white" onerror="this.onerror=null; this.src='https://via.placeholder.com/250?text=QR+Code';">
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-700 w-full">
+                                <li class="flex justify-between border-b pb-2 items-center gap-2">
+                                    <span class="text-slate-500 shrink-0">Chủ tài khoản:</span>
+                                    <span class="font-bold text-right">DINH VAN NAM</span>
+                                </li>
+                                <li class="flex justify-between border-b pb-2 items-center gap-2">
+                                    <span class="text-slate-500 shrink-0">Số tài khoản:</span>
+                                    <span class="font-bold text-blue-600 text-lg text-right">101005137211</span>
+                                </li>
+                                <li class="flex justify-between border-b pb-2 items-center gap-2">
+                                    <span class="text-slate-500 shrink-0">Ngân hàng:</span>
+                                    <span class="font-bold text-right">VietinBank - CN Thái Nguyên</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-slate-50 p-3 rounded-lg">
+                            <p class="text-xs text-slate-500 font-bold mb-1">CÚ PHÁP CHUYỂN KHOẢN (Bắt buộc):</p>
+                            <p class="text-sm font-mono text-slate-800 break-all bg-yellow-100 p-2 inline-block rounded font-bold">
+                                [Họ tên con] - [SĐT Zalo của ba mẹ]
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border-2 border-emerald-100 hover:border-emerald-300 transition-colors">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="text-xl font-bold text-emerald-900 mb-4">Liên Hệ Trực Tiếp (Zalo)</h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">
+                            Do là hệ thống Anh ngữ online, Quý Phụ huynh có thể liên hệ trực tiếp với thầy qua Zalo (số điện thoại cung cấp bên dưới) để được hỗ trợ thủ tục đóng học phí nhanh nhất.
+                        </p>
+                        <div class="flex items-start gap-3 mt-4">
+                            <span class="text-emerald-600 mt-1">📍</span>
+                            <div>
+                                <p class="font-bold text-slate-800">Địa chỉ văn phòng:</p>
+                                <p class="text-slate-600 text-sm">Nhà 50, ngõ 48, Đường Lê Trọng Tấn, Hà Đông, Hà Nội</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 mt-4">
+                            <span class="text-blue-600 mt-1">📞</span>
+                            <div>
+                                <p class="font-bold text-slate-800">Zalo/Hotline hỗ trợ:</p>
+                                <p class="text-blue-600 font-bold">0988999027</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="mt-12 text-center text-slate-500 pb-8">
+            <p>Trân trọng cảm ơn sự đồng hành của Quý Phụ huynh!</p>
+            <p class="font-bold mt-1 text-slate-700">Hệ thống Anh ngữ Lucero</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const rawFeeLabels = ["Học phí phải đóng", "Số tiền tiết kiệm (20%)"];
+        const feeLabels = rawFeeLabels.map(label => wrapLabel(label, 30));
+        
+        const feeCtx = document.getElementById('feeChart').getContext('2d');
+        new Chart(feeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: feeLabels,
+                datasets: [{
+                    data: [2000000, 500000],
+                    backgroundColor: [
+                        '#2563EB',
+                        '#F59E0B'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { family: "'Roboto', sans-serif", size: 13 },
+                            padding: 20
+                        }
+                    },
+                    tooltip: tooltipConfig
+                },
+                cutout: '65%'
+            }
+        });
+
+        const rawSkillsLabels = [
+            "Phát âm chuẩn bản xứ",
+            "Phản xạ giao tiếp tự nhiên",
+            "Khả năng nghe hiểu toàn diện",
+            "Sự tự tin thuyết trình"
+        ];
+        const skillsLabels = rawSkillsLabels.map(label => wrapLabel(label, 16));
+
+        const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+        new Chart(skillsCtx, {
+            type: 'bar',
+            data: {
+                labels: skillsLabels,
+                datasets: [{
+                    label: 'Mức độ tập trung (%)',
+                    data: [90, 85, 95, 100],
+                    backgroundColor: '#10B981',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: '#F1F5F9'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: { family: "'Roboto', sans-serif", size: 11 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: tooltipConfig
+                }
+            }
+        });
+    </script>
+</body>
+</html>
